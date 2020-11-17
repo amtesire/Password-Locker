@@ -30,13 +30,13 @@ class TestCredentials(unittest.TestCase):
     
     def setUp(self):
         
-        self.new_credential = Credential('tesire','instagram','tesiregisele','123456')
+        self.new_credential = Credential('gisele7','instagram','tesiregisele','123456')
 
     def test__init__(self):
         '''
 		Test to check if the reation of credential instances is properly done
 		'''
-        self.assertEqual(self.new_credential.username,'tesire')
+        self.assertEqual(self.new_credential.username,'gisele7')
         self.assertEqual(self.new_credential.credential_account,'instagram')
         self.assertEqual(self.new_credential.account_name,'tesiregisele')
         self.assertEqual(self.new_credential.password,'123456')
@@ -56,7 +56,7 @@ class TestCredentials(unittest.TestCase):
         objects to our list_of_credentials
         '''
         self.new_credential.save_credentials()
-        test_credential = Credential("gizo","social","tesiregisele","112233") # new credential
+        test_credential = Credential("gisele7","social","tesiregisele","112233") # new credential
         test_credential.save_credentials()
         
         self.assertEqual(len(Credential.list_of_credentials),2)
@@ -70,7 +70,7 @@ class TestCredentials(unittest.TestCase):
 		Test to check if we can find a credential by credential_account
 		'''
         self.new_credential.save_credentials()
-        test_user = Credential('gisele','github','amtesire','123456')
+        test_user = Credential('gisele7','github','amtesire','123456')
         test_user.save_credentials()
         
         credential_exists = Credential.find_by_credential_name('github')
@@ -81,7 +81,7 @@ class TestCredentials(unittest.TestCase):
         method that returns a list of all credentials saved
         '''
         self.new_credential.save_credentials()
-        test_user = Credential('gisele','github','amtesire','123456')
+        test_user = Credential('gisele7','github','amtesire','123456')
         test_user.save_credentials()
         
         self.assertEqual(Credential.display_credentials(User),Credential.user_credentials_list)
@@ -91,7 +91,7 @@ class TestCredentials(unittest.TestCase):
 		Test to confirm if we can copy a credential from saved credentials
 		'''
         self.new_credential.save_credentials()
-        test_user = Credential('gisele','github','amtesire','123456')
+        test_user = Credential('gisele7','github','amtesire','123456')
         test_user.save_credentials() 
         Credential.copy_credential('123456')
         
