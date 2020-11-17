@@ -39,7 +39,7 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(self.new_credential.account_name,'tesiregisele')
         self.assertEqual(self.new_credential.password,'123456')
 
-          def test_save_credentials(self):
+    def test_save_credentials(self):
         '''
         test_save_credentials test case to test if the credential object is saved into
          the credential list
@@ -58,3 +58,44 @@ class TestCredentials(unittest.TestCase):
         test_credential.save_credentials()
         
         self.assertEqual(len(Credential.list_of_credentials),2)
+
+    def tearDown(self):
+           
+        Credential.list_of_credentials = []
+
+    def test_find_by_credential_name(self):
+        '''
+		Test to check if we can find a credential by credential_account
+		'''
+        self.new_credential.save_credentials()
+        test_user = Credential('gisele','github','amtesire','123456')
+        test_user.save_credentials()
+        
+        credential_exists = Credential.find_by_credential_name('github')
+        self.assertEqual(credential_exists,test_user)
+
+    def test_display_credentials(self):
+        '''
+        method that returns a list of all credentials saved
+        '''
+        self.new_credential.save_credentials()
+        test_user = Credential('gisele','github','amtesire','123456')
+        test_user.save_credentials()
+        
+        self.assertEqual(Credential.display_credentials(User),Credential.user_credentials_list)
+
+    def test_copy_credential(self):
+        '''
+		Test to confirm if we can copy a credential from saved credentials
+		'''
+        self.new_credential.save_credentials()
+        test_user = Credential('gisele','github','amtesire','123456')
+        test_user.save_credentials() 
+        Credential.copy_credential('123456')
+        
+        self.assertEqual(self.new_credential.password,pyperclip.paste())
+        print(pyperclip.paste())
+  
+        
+if __name__ == '__main__':
+    unittest.main()
