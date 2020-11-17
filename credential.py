@@ -15,7 +15,7 @@ class Credential:
 		self.account_name = account_name
 		self.password = password
 
-    @classmethod
+
 	def check_user(cls,first_name,password):
 		
 		current_user = ''
@@ -48,7 +48,7 @@ class Credential:
 		password_gen=''.join(random.choice(char) for _ in range(size))
 		return password_gen
 
-    @classmethod
+
 	def display_credentials(cls,username):
 		'''
 		Method to display the list of credentials saved.
@@ -59,7 +59,7 @@ class Credential:
 				user_credentials_list.append(credential)
 		return user_credentials_list
 
-    @classmethod
+
 	def find_by_credential_name(cls, credential_account):
 		'''
 		Method that takes in a credential_account and returns a credential that matches that credential_account.
@@ -69,7 +69,7 @@ class Credential:
 				return credential
 		return False
 
-    @classmethod
+
 	def copy_credential(cls,credential_account):
 		'''
 		Method that copies a credential to the clipboard.
@@ -81,4 +81,3 @@ class Credential:
 		
 		except 	AttributeError: 
 			return "Invalid credential name" 
-            
