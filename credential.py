@@ -47,3 +47,24 @@ class Credential:
 		'''
 		password_gen=''.join(random.choice(char) for _ in range(size))
 		return password_gen
+
+    @classmethod
+	def display_credentials(cls,username):
+		'''
+		Method to display the list of credentials saved.
+		'''
+		user_credentials_list = []
+		for credential in cls.list_of_credentials:
+			if credential.username == username:
+				user_credentials_list.append(credential)
+		return user_credentials_list
+
+    @classmethod
+	def find_by_credential_name(cls, credential_account):
+		'''
+		Method that takes in a credential_account and returns a credential that matches that credential_account.
+		'''
+		for credential in cls.list_of_credentials:
+			if credential.credential_account == credential_account:
+				return credential
+		return False
