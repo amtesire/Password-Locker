@@ -68,3 +68,16 @@ class Credential:
 			if credential.credential_account == credential_account:
 				return credential
 		return False
+
+    @classmethod
+	def copy_credential(cls,credential_account):
+		'''
+		Method that copies a credential to the clipboard.
+		'''
+		try:
+			find_credential = Credential.find_by_credential_name(credential_account)
+			print(f'Your Password for {credential_account} has been copied. You can paste it anywhere now.')
+			return pyperclip.copy(find_credential.password)
+		
+		except 	AttributeError: 
+			return "Invalid credential name" 
