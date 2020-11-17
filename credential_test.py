@@ -23,4 +23,18 @@ class TestUser(unittest.TestCase):
     def tearDown(self):
            
         User.users_list = []
+               
+class TestCredentials(unittest.TestCase):
+    
+    def setUp(self):
         
+        self.new_credential = Credential('tesire','instagram','tesiregisele','123456')
+
+    def test__init__(self):
+        '''
+		Test to check if the reation of credential instances is properly done
+		'''
+        self.assertEqual(self.new_credential.username,'tesire')
+        self.assertEqual(self.new_credential.credential_account,'instagram')
+        self.assertEqual(self.new_credential.account_name,'tesiregisele')
+        self.assertEqual(self.new_credential.password,'123456')
