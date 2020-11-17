@@ -12,9 +12,9 @@ class User:
 		self.first_name = first_name
 		self.last_name = last_name
 		self.password = password
-    
-    users_list = []
-    def save_user(self):
+
+	users_list = []
+	def save_user(self):
 		'''
 		Method to save a newly created user into users_list.
 		'''
